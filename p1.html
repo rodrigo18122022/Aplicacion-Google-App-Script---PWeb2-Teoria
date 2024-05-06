@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enviar Correo Electrónico</title>
+    <link rel="stylesheet" href="estilos.css">
+    <script src="https://apis.google.com/js/api.js" onload="initGoogleApi()"></script>
+
+    <script>
+        function initGoogleApi() {
+            console.log("API de Google cargada");
+        }
+        function enviarCorreo() {
+            var destinatario = document.getElementById("destinatario").value;
+            var asunto = document.getElementById("asunto").value;
+            var mensaje = document.getElementById("mensaje").value;
+
+
+                google.script.run.enviarCorreo();
+                alert("Correo enviado con éxito a " + destinatario);
+
+                // Limpiar formulario
+                document.getElementById("destinatario").value = "";
+                document.getElementById("asunto").value = "";
+                document.getElementById("mensaje").value = "";
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h2>Enviar Correo Electrónico</h2>
+        <label for="destinatario">Destinatario:</label>
+        <input type="email" id="destinatario" placeholder="Correo electrónico del destinatario" required>
+        <label for="asunto">Asunto:</label>
+        <input type="text" id="asunto" placeholder="Asunto del correo" required>
+        <label for="mensaje">Mensaje:</label>
+        <textarea id="mensaje" placeholder="Escribe tu mensaje aquí" required></textarea>
+        <button onclick="enviarCorreo()">Enviar Correo</button>
+    </div>
+</body>
+</html>
